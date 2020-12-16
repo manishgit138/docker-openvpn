@@ -21,6 +21,7 @@ install:
 #   - DEBUG=1
 before_script:
     - image="kylemanna/openvpn"
+    - docker buildx create --use --name mybuilder
     - docker buildx build --platform linux/amd64,linux/arm64 -t "$image" .
     - docker inspect "$image"
     - docker run --rm "$image" openvpn --version || true # why does it return 1?
