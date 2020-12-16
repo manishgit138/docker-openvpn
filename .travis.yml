@@ -24,7 +24,7 @@ install:
 #   - DEBUG=1
 before_script:
     - image="kylemanna/openvpn"
-    - docker build -t "$image" .
+    - docker build -t "$image" -f Dockerfile.aarch64 .
     - docker inspect "$image"
     - docker run --rm "$image" openvpn --version || true # why does it return 1?
     - docker run --rm "$image" openssl version
