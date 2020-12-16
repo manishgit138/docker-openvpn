@@ -6,6 +6,7 @@
 #            - ubuntu-toolchain-r-test
 #        packages:
 #            - openvpn
+dist: focal
 
 services:
     - docker
