@@ -32,6 +32,11 @@ before_script:
 script:
     - official-images/test/run.sh "$image"
     - test/run.sh "$image"
+    - if ["${TRAVIS_CPU_ARCH}" == "arm64" ]; then
+      docker tag $image $image:$TRAVIS_TAG-arm64;
+      else
+      docker tag $image $image:$TRAVIS_TAG-amd64;
+      fi
 
 after_script:
     - docker images
