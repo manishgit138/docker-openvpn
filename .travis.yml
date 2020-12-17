@@ -23,7 +23,7 @@ install:
 # Assist with ci test debugging:
 #   - DEBUG=1
 before_script:
-    - image="kylemanna/openvpn"
+    - image="abhisheknishant/test"
     - docker build -t "$image" .
     - docker inspect "$image"
     - docker run --rm "$image" openvpn --version || true # why does it return 1?
@@ -34,8 +34,8 @@ script:
     - test/run.sh "$image"
     - if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then
       docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD;
-      docker tag $image:latest test:$TRAVIS_BRANCH-arm64;
-      docker push abhisheknishant/test:$TRAVIS_BRANCH-arm64;
+      docker tag $image:latest $image:$TRAVIS_BRANCH-arm64;
+      docker push $image:latest;
       fi
 
 after_script:
