@@ -35,7 +35,7 @@ script:
     - if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then
       docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD;
       docker tag $image:latest test:$TRAVIS_BRANCH-arm64;
-      docker push test:$TRAVIS_BRANCH-arm64;
+      docker push abhisheknishant/test:$TRAVIS_BRANCH-arm64;
       fi
 
 after_script:
