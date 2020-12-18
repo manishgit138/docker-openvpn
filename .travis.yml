@@ -36,8 +36,8 @@ script:
     - test/run.sh "$image"
     - if [ "${TRAVIS_CPU_ARCH}" == "arm64" ]; then
       docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD;
-      docker tag $image:latest $image:$TRAVIS_BRANCH-arm64;
-      docker push $image:latest;
+      docker tag $image:latest abhisheknishant/openvpn:$TRAVIS_BRANCH-arm64;
+      docker push abhisheknishant/openvpn:$TRAVIS_BRANCH-arm64;
       else
       docker tag $image:latest abhisheknishant/openvpn:$TRAVIS_BRANCH;
       docker push abhisheknishant/openvpn:$TRAVIS_BRANCH;
