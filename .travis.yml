@@ -36,6 +36,9 @@ script:
       docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD;
       docker tag $image:latest $image:$TRAVIS_BRANCH-arm64;
       docker push $image:latest;
+      else
+      docker tag $image:latest abhisheknishant/openvpn:$TRAVIS_BRANCH;
+      docker push abhisheknishant/openvpn:$TRAVIS_BRANCH;
       fi
 
 after_script:
