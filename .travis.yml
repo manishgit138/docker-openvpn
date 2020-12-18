@@ -23,7 +23,7 @@ install:
 # Assist with ci test debugging:
 #   - DEBUG=1
 before_script:
-    - image="abhisheknishant/test1"
+    - image="abhisheknishant/openvpn"
     - docker build -t "$image" .
     - docker inspect "$image"
     - docker run --rm "$image" openvpn --version || true # why does it return 1?
